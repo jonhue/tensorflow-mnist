@@ -46,10 +46,10 @@ def cnn_model_fn(features, labels, mode):
     train_op = optimizer.minimize(loss=loss, global_step=tf.train.get_global_step())
     return tf.estimator.EstimatorSpec(mode=mode, loss=loss, train_op=train_op)
   # Evaluation metrics
-  eval_metrics_ops = {
+  eval_metric_ops = {
     "accuracy": tf.metrics.accuracy(labels=labels, predictions=predictions["classes"])
   }
-  return tf.estimator.EstimatorSpec(mode=mode, loss=loss, eval_metrics_ops=eval_metrics_ops)
+  return tf.estimator.EstimatorSpec(mode=mode, loss=loss, eval_metric_ops=eval_metric_ops)
 
 def main(unused_argv):
   # Load training and eval data
